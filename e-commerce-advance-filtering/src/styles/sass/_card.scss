@@ -10,10 +10,25 @@
     border: 2px solid #ededed;
     padding: 20px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      box-shadow: 2px 2px 20px #eee;
+    }
+
+    &:hover .card-img {
+      transform: scale(1.05);
+    }
 
     .card-img {
       width: 13rem;
       margin-bottom: 1rem;
+      transition: all 0.2s ease-in-out;
     }
 
     .card-title {
