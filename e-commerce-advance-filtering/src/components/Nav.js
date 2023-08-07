@@ -17,13 +17,13 @@ const Nav = ({ handleInputChange, query }) => {
 
       <div className="profile-container">
         <Link to={"/favorite"}>
-          <FiHeart className="nav-icons" />
+          <FiHeart className="nav-icons heart" />
         </Link>
         <Link to={"/cart"}>
-          <AiOutlineShoppingCart className="nav-icons" />
+          <AiOutlineShoppingCart className="nav-icons cart" />
         </Link>
         <Link to={"/users"}>
-          <AiOutlineUserAdd className="nav-icons" />
+          <AiOutlineUserAdd className="nav-icons users" />
         </Link>
       </div>
     </nav>

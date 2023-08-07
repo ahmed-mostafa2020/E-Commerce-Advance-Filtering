@@ -1,11 +1,11 @@
 nav {
   display: flex;
   border-bottom: 2px solid #f3f3f3;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   padding: 20px;
   z-index: 999;
-  margin-left: 2rem;
+  margin-left: 7rem;
 
   input {
     padding: 12px 20px;
@@ -16,28 +16,29 @@ nav {
     border-radius: 5px;
     position: relative;
     width: 14rem;
+    box-shadow: 0px 0px 5px #eee;
+
+    transition: all 0.2s ease-in-out;
+    &:focus {
+      box-shadow: none;
+    }
   }
 
-  .nav-icons {
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-left: 2rem;
+  .profile-container {
+    .nav-icons {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-left: 2rem;
+      transition: all 0.1s ease-in-out;
+    }
+    .heart:hover {
+      color: red;
+    }
+    .cart:hover {
+      color: green;
+    }
+    .users:hover {
+      color: purple;
+    }
   }
-}
-
-input {
-  padding: 12px 20px;
-  border: none;
-  background: #f7f6f6;
-  outline: none;
-  margin-right: 20px;
-  border-radius: 5px;
-  position: relative;
-  width: 14rem;
-}
-
-.nav-icons {
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-left: 2rem;
 }

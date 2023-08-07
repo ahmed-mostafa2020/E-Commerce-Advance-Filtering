@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
+import Recommended from "./components/Recommended";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
@@ -9,7 +11,9 @@ function App() {
           path="/"
           element={
             <>
+              <Sidebar />
               <Nav />
+              <Recommended />
             </>
           }
         />
