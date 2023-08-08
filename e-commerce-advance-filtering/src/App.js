@@ -9,6 +9,9 @@ import Products from "./components/Products";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCompany, setSelectedCompany] = useState(null);
+  const [selectedPrice, setSelectedPrice] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null);
 
   // ----------- Input Filter -----------
   const [query, setQuery] = useState("");
@@ -21,17 +24,34 @@ function App() {
     (product) => product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
   );
 
-  // ----------- Radio Filtering -----------
+  // ----------- Radio Filtering (Category)-----------
   const handleChange = (event) => {
     setSelectedCategory(event.target.value);
   };
 
-  // ------------ Button Filtering -----------
+  // ------------ Button Filtering (Company) -----------
   const handleClick = (event) => {
-    setSelectedCategory(event.target.value);
+    setSelectedCompany(event.target.value);
   };
 
-  function filteredData(products, selected, query) {
+  // ----------- Radio Filtering (Price) -----------
+  const handleChangePrice = (event) => {
+    setSelectedPrice(event.target.value);
+  };
+
+  // ----------- Radio Filtering (Color) -----------
+  const handleChangeColor = (event) => {
+    setSelectedColor(event.target.value);
+  };
+
+  function filteredData(
+    products,
+    selectedCategory,
+    selectedCompany,
+    selectedPrice,
+    selectedColor,
+    query
+  ) {
     let filteredProducts = products;
 
     // Filtering Input Items
@@ -39,14 +59,31 @@ function App() {
       filteredProducts = filteredItems;
     }
 
-    // Applying selected filter
-    if (selected) {
+    // Applying selectedCategory filter
+    if (selectedCategory) {
       filteredProducts = filteredProducts.filter(
-        ({ category, color, company, newPrice }) =>
-          category === selected ||
-          color === selected ||
-          company === selected ||
-          newPrice === selected
+        ({ category }) => category === selectedCategory
+      );
+    }
+
+    // Applying selectedCompany filter
+    if (selectedCompany) {
+      filteredProducts = filteredProducts.filter(
+        ({ company }) => company === selectedCompany
+      );
+    }
+
+    // Applying selectedPrice filter
+    if (selectedPrice) {
+      filteredProducts = filteredProducts.filter(
+        ({ newPrice }) => newPrice === selectedPrice
+      );
+    }
+
+    // Applying selectedColor filter
+    if (selectedColor) {
+      filteredProducts = filteredProducts.filter(
+        ({ color }) => color === selectedColor
       );
     }
 
@@ -65,7 +102,14 @@ function App() {
     );
   }
 
-  const result = filteredData(products, selectedCategory, query);
+  const result = filteredData(
+    products,
+    selectedCategory,
+    selectedCompany,
+    selectedPrice,
+    selectedColor,
+    query
+  );
 
   return (
     <div className="App">
@@ -74,7 +118,11 @@ function App() {
           path="/"
           element={
             <>
-              <Sidebar handleChange={handleChange} />
+              <Sidebar
+                handleChange={handleChange}
+                handleChangePrice={handleChangePrice}
+                handleChangeColor={handleChangeColor}
+              />
               <Nav query={query} handleInputChange={handleInputChange} />
               <Recommended handleClick={handleClick} />
               <Products result={result} />
